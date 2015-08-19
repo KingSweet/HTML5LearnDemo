@@ -91,5 +91,60 @@
     }
 </script><br/>
 
+
+
+<!--5.range copy-->
+<div id="div-4">
+    <p id="p-1">KingSweet !!!!!   12232123<br/></p>
+    <button onclick="cloneRange()">copy</button><br/>
+</div>
+
+<script>
+    function cloneRange () {
+        var range = document.createRange();
+        range.selectNodeContents(document.getElementById("p-1"));
+        //创建一个新的 Range 对象，表示与当前的 Range 对象相同的文档区域
+        var rangeClone = range.cloneRange();
+        alert(rangeClone.toString());
+        //返回新的 DocumentFragment 对象，它包含该范围表示的文档区域的副本
+        document.getElementById("div-4").appendChild(range.cloneContents());
+    }
+</script>
+
+
+
+<!--6.extractContents 移动-->
+<div id="div-5" style="background-color: aqua; width: 100px; height: 100px">sssss</div>
+<div id="div-6" style="background-color: blue; width: 100px; height: 100px"></div>
+<button onclick="moveContent()">移动元素</button><br/>
+<script>
+    function moveContent () {
+        var div1 = document.getElementById("div-5");
+        var div2 = document.getElementById("div-6");
+        var range = document.createRange();
+        range.selectNodeContents(div1);
+        div2.appendChild(range.extractContents());
+    }
+</script>
+
+
+<!--7.-->
+<div onmouseup="moveBtn()" style="background-color: aqua; width: 100px; height: 100%">
+    akjsdkjakjsgdkjagskdgasjdgjasg
+</div>
+<button id="btn-1">移动按钮</button><br/>
+<script>
+    function moveBtn () {
+        var btn = document.getElementById("btn-1");
+        var selection = document.getSelection();
+        if (selection) {
+            var range = selection.getRangeAt(0);
+            range.insertNode(btn);
+        }
+    }
+</script>
+
+
+
 </body>
 </html>
