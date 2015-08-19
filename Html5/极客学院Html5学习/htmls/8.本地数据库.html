@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../JS/8-js.js"></script>
+</head>
+<body onload="init()">
+
+<!--
+    1.创建数据库对象openDatabase(库名, 版本号, 数据库描述, 数据库大小)
+    2.使用事务处理
+
+<script>
+    var db = openDatabase("mydb", "1.0", "testDB", 1024 * 100);
+    db.transaction(
+            function(tx) {
+                tx.executeSql("");
+            }
+    );
+    //sql语句, 数组, 正确的回调, 错误的回调
+    transaction.executeSql("", [], function(){}, function(){});
+</script>
+-->
+
+<table>
+    <tr>
+        <td>姓名: </td>
+        <td><input type="text" id="name"></td>
+    </tr>
+    <tr>
+        <td>留言: </td>
+        <td><input type="text" id="memo"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="button" value="保存" onclick="saveData()"></td>
+    </tr>
+</table>
+<hr/>
+<table id="datatable" border="1"></table>
+<p id="msg"></p>
+
+</body>
+</html>

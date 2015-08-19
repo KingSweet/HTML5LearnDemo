@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--1.figure + figcaption-->
+<figure>
+    <img src="../Res/1.jpg" alt="...">
+    <img src="../Res/2.jpg" alt="...">
+    <img src="../Res/3.jpg" alt="...">
+    <figcaption>图片</figcaption>
+</figure>
+
+
+
+<!--2.details + summary-->
+<details id="details" onclick="detailOnclick(this)">
+    <summary>速度与激情</summary>
+    <p id="p" style="visibility: hidden">...............ssssss..................</p>
+</details>
+<script>
+    function detailOnclick (details) {
+        var p = document.getElementById("p");
+        if (details.open) {
+            p.style.visibility = "hidden";
+        } else {
+            p.style.visibility = "visible";
+        }
+    }
+</script>
+
+
+
+<!--3.mark  -  突出文字-->
+<p>这是一段文字, 用来<mark>测试</mark>高亮!</p><br/>
+
+
+<!--4.progress-->
+<section>
+    <h2>pregress元素使用</h2>
+    <p>
+        完成百分比
+        <progress id="progress-1" value="0" max="100"></progress>
+        <span id="span-1">0</span>%
+    </p>
+    <input type="button" onclick="btn()" value="click">
+</section>
+<script>
+    function btn () {
+        var i = 0;
+        var timer = setInterval(function () {
+
+            if (i++ < 100) {
+                updateProgress(i);
+            } else {
+                clearInterval(timer);
+            }
+
+        }, 100);
+    }
+
+    function updateProgress (num) {
+        var progress = document.getElementById("progress-1");
+        progress.value = num;
+        document.getElementById("span-1").textContent = num;
+    }
+</script>
+
+
+<!--5.ol - 有序列表-->
+<ol start="5" reversed="reversed">
+    <li>l1</li>
+    <li>l2</li>
+    <li>l3</li>
+    <li>l4</li>
+    <li>l5</li>
+</ol>
+
+
+<!--6.dl
+    定义和用法
+<dl> 标签定义了定义列表（definition list）。
+<dl> 标签用于结合 <dt> （定义列表中的项目）和 <dd> （描述列表中的项目）。
+-->
+<dl>
+    <dt>1...</dt>
+    <dd>sssss</dd>
+    <dt>1...</dt>
+    <dd>sssss</dd>
+    <dt>1...</dt>
+    <dd>sssss</dd>
+</dl>
+
+
+
+<!--7.cite 标签通常表示它所包含的文本对某个参考文献的引用，比如书籍或者杂志的标题。-->
+<h3>cite元素<cite>sssss</cite></h3>
+
+
+
+
+<!--8.small-->
+<small>ssssssss</small>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../CSS/16-CSS.css">
+</head>
+<body>
+
+<!--1.CSS3属性选择器-->
+<div id="div-1">示例文本1</div>
+<div id="div-2">示例文本2</div>
+<div id="div-3">示例文本3</div>
+<div id="div-4">示例文本4</div>
+<div id="div5">示例文本5</div>
+
+<!--2.结构性伪类选择器-->
+<p id="p-1">第一行<br/>第二行</p><br/>
+<ul id="ul-1">
+    <p>ssssss</p>
+    <li>row1</li>
+    <li>row2</li>
+    <li>row3</li>
+    <li>row4</li>
+</ul>
+
+<table>
+    <tr>
+        <td>td1</td>
+        <td>td1</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>td1</td>
+        <td></td>
+        <td>ddd</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>td1</td>
+        <td></td>
+    </tr>
+</table><br/>
+
+
+<a href="#div-6">菜单1</a>
+<a href="#div-7">菜单2</a>
+<a href="#div-8">菜单3</a>
+<a href="#div-9">菜单4</a>
+<div id="div-6">示例文本6</div>
+<div id="div-7">示例文本7</div>
+<div id="div-8">示例文本8</div>
+<div id="div-9">示例文本9</div>
+
+<h2>列表</h2>
+<ul id="ul-2">
+    <li>行1</li>
+    <li>行2</li>
+    <li>行3</li>
+    <li>行4</li>
+    <li>行5</li>
+    <li>行6</li>
+    <li>行7</li>
+</ul>
+
+<div id="div-10">只计算同类标签
+    <h2>标题</h2>
+    <p>正文</p>
+    <h2>标题</h2>
+    <p>正文</p>
+    <h2>标题</h2>
+    <p>正文</p>
+    <h2>标题</h2>
+    <p>正文</p>
+</div>
+
+<ul id="ul-3">
+    <li>行1</li>
+    <li>行2</li>
+    <li>行3</li>
+    <li>行4</li>
+    <li>行5</li>
+    <li>行6</li>
+    <li>行7</li>
+    <li>行1</li>
+    <li>行2</li>
+    <li>行3</li>
+    <li>行4</li>
+    <li>行5</li>
+    <li>行6</li>
+    <li>行7</li>
+    <li>行1</li>
+    <li>行2</li>
+    <li>行3</li>
+    <li>行4</li>
+    <li>行5</li>
+    <li>行6</li>
+    <li>行7</li>
+</ul>
+
+
+<!--hover, foucs, active-->
+<input type="text" name="name">
+<input type="text" name="age">
+<input type="checkbox" name="ttt">ttt
+
+
+<br>
+<input type="radio" id="radio-1" name="radio" onchange="radio_change()">可用
+<input type="radio" id="radio-2" name="radio" onchange="radio_change()" checked>不可用
+<input type="text" id="text-1" name="text" disabled>
+<script>
+    function radio_change() {
+        var radio1 = document.getElementById("radio-1");
+        var radio2 = document.getElementById("radio-2");
+        var text1 = document.getElementById("text-1");
+        if (radio1.checked) {
+            text1.disabled = "";
+        } else {
+            text1.value = "";
+            text1.disabled = "disabled";
+        }
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div-1 {
+            text-shadow: 5px 5px 2px blue;
+            color: black;
+            font-size: 40px;
+            text-weight: bold;
+            background-image: url("../Res/11.jpg");
+            font-family: "Noto Serif", "DejaVu Serif", serif;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+
+        @font-face {
+            font-family: WebFont;
+            src: local("Helvetica"), url('')format("truetype");/*客户端有引用客户端, 没有引用服务器端*/
+            font-weight: normal;
+        }
+
+        #div-2 {
+            font-family: Menlo;
+        }
+
+        #div-3 {
+            font-family: Menlo;
+            font-size-adjust: 0.60;
+        }
+        #div-4 {
+            font-family: cursive;
+            font-size-adjust: 0.57;
+        }
+        #div-5 {
+            font-family: Helvetica;
+            font-size-adjust: 0.69;
+        }
+    </style>
+</head>
+<body>
+
+<div id="div-1">Hello</div>
+
+<!--服务器端字体  word-break:normal, keep-all, break-all-->
+<div id="div-2">
+    this is a web page!
+</div>
+
+<div id="div-3">Sample aaaa!</div>
+<div id="div-4">Sample aaaa!</div>
+<div id="div-5">Sample aaaa!</div>
+
+
+</body>
+</html>

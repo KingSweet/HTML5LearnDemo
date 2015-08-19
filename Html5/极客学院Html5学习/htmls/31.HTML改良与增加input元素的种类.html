@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--1.url类型 - 检验是否是网址-->
+<form>
+    <input type="url" name="url" value="http://www.baidu.com">
+    <input type="submit" value="提交">
+</form><br/>
+
+
+<!--2.email - 检验email-->
+<form>
+    <input type="email" name="email" value="133@163.com">
+    <input type="submit" value="提交">
+</form><br/>
+
+
+<!--3.date类型-->
+<input type="date" value=""><br/>
+
+
+<!--4.time类型-->
+<input type="time" value="10:00"><br/>
+
+<!--5.datetime-local类型-->
+<input type="datetime-local" value="10:00"><br/>
+
+<!--6.month类型-->
+<input type="month" value="sss"><br/>
+
+
+<!--7.week类型-->
+<input type="week" value="10:00"><br/>
+
+
+<!--8.number类型-->
+<input type="number" value="15" min="10" max="1000" step="10"><br/>
+
+
+<!--9.计算器-->
+<form>
+    <input type="number" id="num1">
+    +
+    <input type="number" id="num2">
+    =
+    <input type="number" id="result" readonly>
+    <input type="button" value="计算" onclick="sum()">
+</form>
+<script>
+    function sum () {
+        var n1 = document.getElementById("num1").valueAsNumber;
+        var n2 = document.getElementById("num2").valueAsNumber;
+        document.getElementById("result").valueAsNumber = n1+n2;
+    }
+</script>
+
+
+<!--10.range元素-->
+<input type="range" min="10" max="1000" value="100"><br/>
+
+
+<input type="search"><br/>
+
+<input type="tel"><br/>
+
+<input type="color"><br/>
+
+
+<!--11.output元素的追加-->
+<form id="testForm">
+    <input id="range" type="range" min="0" max="100" step="5" value="10" onclick="valueChange()">
+    <output id="output">10</output>
+</form>
+<script>
+    function valueChange () {
+        var number = document.getElementById("range").value;
+        document.getElementById("output").value = number;
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表单</title>
+</head>
+<body>
+
+<form action="http://localhost:63343/htdocs/Service.php" method="post">
+    <!--输入-->
+    用户名:
+    <input type="text" name="name"><br/>
+    密码:
+    <input type="password" name="password"><br/>
+    <input type="submit" value="提交"><br/>
+
+    <!--复选-->
+    你喜欢的水果?
+    苹果1<input type="checkbox">
+    苹果2<input type="checkbox">
+    苹果3<input type="checkbox">
+    苹果4<input type="checkbox">
+    苹果5<input type="checkbox"><br/>
+
+    <!--单选-->
+    性别:
+    男<input type="radio", name="sex">
+    女<input type="radio", name="sex"><br/>
+
+    <!--下拉-->
+    <select>
+        <option>w1</option>
+        <option>w5</option>
+        <option>w4</option>
+        <option>w3</option>
+        <option>w2</option>
+    </select><br/>
+
+    <button>sss</button>
+    <input type="button" value="button">
+    <input type="submit" value="submit">
+
+</form>
+
+<!--文本域-->
+<textarea cols="30" rows="30">ssss</textarea>
+
+</body>
+</html>

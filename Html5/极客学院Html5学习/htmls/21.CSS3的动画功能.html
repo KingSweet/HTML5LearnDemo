@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .div-1 {
+            background-color: #ff00ff;
+            color: black;
+            width: 100px;
+            -webkit-transition: transform 1s linear, color 1s linear, width 1s linear;
+            -moz-transition: transform 1s linear, color 1s linear, width 1s linear;
+            -ms-transition: transform 1s linear, color 1s linear, width 1s linear;
+            -o-transition: transform 1s linear, color 1s linear, width 1s linear;
+            transition: -webkit-transform 1s linear, color 1s linear, width 1s linear;
+        }
+        .div-1:hover {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+            /*background-color: antiquewhite*/;
+            color: red;
+            width: 200px;
+
+        }
+
+        #div-2 {
+            background-color: red;
+        }
+        @-webkit-keyframes myColor {
+            0% { background-color: red; }
+            25% { background-color: blue; }
+            50% { background-color: aliceblue; }
+            75% { background-color: aqua; }
+            100% { background-color: blueviolet; }
+        }
+        #div-2:hover {
+            -webkit-animation: myColor 5s ease-in;
+            -o-animation: myColor 5s linear;
+            animation: myColor 5s linear;
+        }
+    </style>
+</head>
+<body>
+
+<!--1.transition:progerty duration timing-function-->
+<div class="div-1">天下无双</div>
+
+
+<!--2.animations-->
+<div id="div-2">ssssskskjsjsjs</div>
+
+</body>
+</html>

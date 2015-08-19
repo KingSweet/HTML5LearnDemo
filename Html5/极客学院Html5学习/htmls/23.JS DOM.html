@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div-1 {
+            width: 100px;
+            height: 100px;
+            background-color: #ff00ff;
+        }
+    </style>
+</head>
+<body>
+
+<p>aaaaaaa</p>
+<p>aaaaaaa</p>
+<p>aaaaaaa</p>
+<p>aaaaaaa</p>
+<p>aaaaaaa</p>
+<p>aaaaaaa</p>
+<button onclick="printStr()">测试document.write</button><br/>
+<!--注意:不要在文档加载完成后再运行document.write, 否则会覆盖该文档!-->
+<script>
+    printStr();
+    function printStr () {
+        document.write("kkk");
+    }
+</script>
+
+
+<!--更改属性-->
+<button onclick="changeAttr()">测试</button><br/>
+<a id="a-1" href="https://www.baidu.com">https://www.baidu.com</a>
+<script>
+    function changeAttr () {
+        document.getElementById("a-1").href = "http://mail.open.com.cn";
+    }
+</script>
+<br/>
+
+<!--更改CSS样式-->
+<div id="div-1">sssssssssss</div>
+<button onclick="changeCSS()">更改CSS样式</button>
+<script>
+    function changeCSS () {
+        document.getElementById("div-1").style.backgroundColor = "green";
+    }
+</script>
+
+
+<!--句柄方式设置监听-->
+<button id="btn-1">句柄方式</button>
+<script>
+    var x = document.getElementById("btn-1");
+
+    x.addEventListener("click", function () {
+        alert("btn-1");
+    });
+
+    x.addEventListener("click", testX);
+
+    function testX () {
+        alert("testX");
+    }
+</script>
+
+
+
+<!--详解DOM-->
+<p name="p-1">KingSweet</p>
+<p name="p-1">KingSweet</p>
+<p name="p-1">KingSweet</p>
+<p name="p-1">KingSweet</p>
+<p name="p-1">KingSweet</p>
+<a id="a-2">aaaaaaaaaaaaaaaaa</a>
+<script>
+    getName();
+    function getName () {
+        var tags = document.getElementsByName("p-1");
+        //var tags = document.getElementsByTagName("p");
+        alert(tags.length);
+        tags[2].innerHTML = "sssss";
+    }
+
+    getAttr();
+    function getAttr () {
+        var anode = document.getElementById("a-2");
+        var attr = anode.getAttribute("id");
+        document.write("<br/>" + attr);
+    }
+</script>
+
+</body>
+</html>

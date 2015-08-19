@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--1.设置默认值 contol属性-->
+<form>
+    <label id="label-1">
+        邮编:
+        <input id="txt_zip" maxlength="6">
+        <small>请输入6位数</small>
+    </label>
+    <input type="button" value="请输入默认值" onclick="setValue()">
+</form>
+<script>
+    function setValue () {
+        var label = document.getElementById("label-1");
+        var textbox = label.control;
+        textbox.value = "010010";
+    }
+</script>
+
+
+<!--2.placeholder-->
+<input placeholder="ssss" type="text">
+
+
+
+<!--3.list-->
+<form>
+    <input name="greeting" type="text" list="greetings">
+    <datalist id="greetings" style="display: none">
+        <option value="HTML5学习">HTML5学习</option>
+        <option value="Android学习">Android学习</option>
+        <option value="iOS学习">iOS学习</option>
+    </datalist>
+</form>
+
+
+
+<!--4.自动完成输入-->
+<input type="text" name="greeting" autocomplete="on" list="g2">
+<datalist id="g2" style="display: none">
+    <option value="HTML5学习">HTML5学习</option>
+    <option value="Android学习">Android学习</option>
+    <option value="iOS学习">iOS学习</option>
+</datalist>
+
+
+<!--5.pattern正则表达式-限制输入-->
+<form action="http://localhost">
+    请输入:
+    <input pattern="[A-Z]{3}" name="part">
+    <input type="submit">
+</form>
+
+
+<!--6.SelectionDirection-->
+<form>
+    <input type="text"  name="text">
+    <input type="button" value="点我!" onclick="AD()">
+</form>
+<script>
+    function AD () {
+        var control = document.forms[0]['text'];
+        var direction = control.selectionDirection;
+        alert(direction);
+    }
+</script>
+
+
+
+
+<!--7.复选框的indeterminate属性 表示为选择状态-->
+<input type="checkbox" indeterminate id="cb">属性测试<br/>
+<input type="image" src="../Res/1.jpg" width="50" height="40">属性测试<br/>
+<script>
+    var cb = document.getElementById("cb");
+    cb.indeterminate = true;
+</script>
+
+</body>
+</html>

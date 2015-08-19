@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+        window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+        window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+        window.IDBCursor = window.IDBCursor || window.webkitIDBCursor || window.msIDBCursor;
+
+        function connectDB () {
+            var dbName = "indexedDB";
+            var dbVersion = 1;
+            var idb;
+            var dbConnect = indexedDB.open(dbName, dbVersion);
+            dbConnect.onsuccess = function (e) {
+                idb = e.target.result;
+                alert("数据库连接成功!");
+            };
+            dbConnect.onerror = function () {
+                alert("数据库链接失败!");
+            }
+        }
+
+        function updateVersion () {
+            var dbName = "indexedDB";
+            var dbVersion = 2;
+            var idb;
+            var dbConnect = indexedDB.open(dbName, dbVersion);
+            dbConnect.onsuccess = function (e) {
+                idb = e.target.result;
+                alert("数据库连接成功!");
+            };
+            dbConnect.onerror = function () {
+                alert("数据库链接失败!");
+            };
+            dbConnect.onupgradeneeded = function (e) {
+                idb = e.target.result;
+                var tx = e.target.transaction;
+                var oldV = e.oldVersion;
+                var newV = e.newVersion;
+                alert("数据库更新成功" + oldV + "---" + newV);
+            };
+        }
+
+        function createObjectStore1 () {
+            var dbName = "indexedDB";
+            var dbVersion = 3;
+            var idb;
+            var dbConnect = indexedDB.open(dbName, dbVersion);
+            dbConnect.onsuccess = function (e) {
+                idb = e.target.result;
+                alert("数据库连接成功!");
+            };
+            dbConnect.onerror = function () {
+                alert("数据库链接失败!");
+            };
+            dbConnect.onupgradeneeded = function (e) {
+                idb = e.target.result;
+                var name = "user";
+                var optionalParameters = {
+                    keyPath:"userid",
+                    autoIncrement:false
+                };
+                var store = idb.createObjectStore(name, optionalParameters);
+                alert("对象仓库创建成功!" + store);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<input type="button" value="链接数据库" onclick="connectDB()"><br/>
+<input type="button" value="更新数据库" onclick="updateVersion()"><br/>
+<input type="button" value="创建仓库对象" onclick="createObjectStore1()">
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+1.Selection对象和Range对象的使用
+<input type="button" value="click" onclick="range1()">
+<div id="div-1"></div>
+<script>
+    function range1 () {
+        var html;
+        var showRangeDiv = document.getElementById("div-1");
+        var selection = document.getSelection();//获得选中区域
+        if (selection.rangeCount > 0) {
+            html = "您选取了>" + selection.rangeCount + "<内容<br/>";
+            for (var i = 0; i < selection.rangeCount; ++i) {
+                var range = selection.getRangeAt(i);
+                //多段区域
+                html += "第" + (i+1) + "段内容为: " + range + "<br/>";
+            }
+            showRangeDiv.innerHTML = html;
+        }
+    }
+</script><br/>
+
+
+
+2.
+<div id="div-2" style="background-color: #ff00ff; width: 300px; height: 50px">
+    元素中的内容
+</div>
+<button onclick="deleteRangeCount(false)">删除元素</button>
+<button onclick="deleteRangeCount(true)">删除内容</button>
+<script>
+    function deleteRangeCount (onlyContent) {
+        var div = document.getElementById("div-2");
+        var range = document.createRange();
+        if (onlyContent) {
+            range.selectNodeContents(div);//获得选中区域内容
+            range.deleteContents();
+        } else {
+            range.selectNode(div);//获得选中的节点
+            range.deleteContents();
+        }
+    }
+</script><br/>
+
+
+
+3.setStart     ------    setEnd
+<div id="div-3" style="color: aqua">删除文字osoososososososos</div>
+<button onclick="deleteText()">删除文字</button>
+<script>
+    function deleteText () {
+        var div = document.getElementById("div-3");
+        var textNode = div.firstChild;
+        var range = document.createRange();
+        range.setStart(textNode, 0);
+        range.setEnd(textNode, 3);
+        range.deleteContents();
+    }
+</script><br/>
+
+
+
+4.setStartBefore    setEndAfter
+<table id="table-1" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>1111</td>
+        <td>2222</td>
+    </tr>
+    <tr>
+        <td>1111</td>
+        <td>2222</td>
+    </tr>
+</table>
+<button onclick="deleteRow()">删除第一行</button>
+<script>
+    function deleteRow () {
+        var table = document.getElementById("table-1");
+        if (table.rows.length > 0) {
+            var row = table.rows[0];
+            var range = document.createRange();
+            range.setStartBefore(row);
+            range.setEndAfter(row);
+            range.deleteContents();
+        }
+    }
+</script><br/>
+
+</body>
+</html>

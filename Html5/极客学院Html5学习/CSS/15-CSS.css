@@ -1,0 +1,97 @@
+div {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    /*-webkit-transition: width 2s, height 2s;*//*过度动画*//*
+    -moz-transition: width 2s, height 2s;
+    -ms-transition: width 2s, height 2s;
+    -o-transition: width 2s, height 2s;
+    transition: width 2s, height 2s;*/
+}
+
+#div-2 {
+    transform: translate(100px, 100px);
+    -webkit-transform: translate(100px, 100px);/*safari, chrome*/
+    -ms-transform: translate(100px, 100px);/*IE*/
+    -o-transform: translate(100px, 100px);/*opera*/
+    -moz-transform: translate(100px, 100px);/*Firefox*/
+}
+#div-3 {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);/*safari, chrome*/
+    -ms-transform: rotate(90deg);/*IE*/
+    -o-transform: rotate(90deg);/*opera*/
+    -moz-transform: rotate(90deg);/*Firefox*/
+}
+#div-4 {
+    transform: scale(2, 2);
+    -webkit-transform: scale(2, 2);/*safari, chrome*/
+    -ms-transform: scale(2, 2);/*IE*/
+    -o-transform: scale(2, 2);/*opera*/
+    -moz-transform: scale(2, 2);/*Firefox*/
+}
+#div-5 {
+    transform: skew(50deg, 50deg);
+    -webkit-transform: skew(50deg, 50deg);/*safari, chrome*/
+    -ms-transform: skew(50deg, 50deg);/*IE*/
+    -o-transform: skew(50deg, 50deg);/*opera*/
+    -moz-transform: skew(50deg, 50deg);/*Firefox*/
+}
+#div-6 {
+    transform: rotateX(120deg);
+    -webkit-transform: rotateX(120deg);/*safari, chrome*/
+    -ms-transform: rotateX(120deg);/*IE*/
+    -o-transform: rotateX(120deg);/*opera*/
+    -moz-transform: rotateX(120deg);/*Firefox*/
+}
+#div-7 {
+    transform: rotateY(120deg);
+    -webkit-transform: rotateY(120deg);/*safari, chrome*/
+    -ms-transform: rotateY(120deg);/*IE*/
+    -o-transform: rotateY(120deg);/*opera*/
+    -moz-transform: rotateY(120deg);/*Firefox*/
+}
+
+#div-8 {
+    position: relative;
+    -webkit-animation: anim 5s;
+    -o-animation: anim 5s;
+    animation: anim 5s;
+}
+@keyframes anim {
+    0% { background-color: red; left: 0px; top: 0px;  }
+    25% { background-color: blueviolet; left: 110px; top: 0px; }
+    50% { background-color: grey; left: 110px; top: 110px; }
+    75% { background-color: yellow; left: 0px; top: 110px;  }
+    100% { background-color: red; left: 0px; top: 0px; }
+}
+@-webkit-keyframes anim {
+    0% { background-color: red; left: 0px; top: 0px;  }
+    25% { background-color: blueviolet; left: 110px; top: 0px; }
+    50% { background-color: grey; left: 110px; top: 110px; }
+    75% { background-color: yellow; left: 0px; top: 110px;  }
+    100% { background-color: red; left: 0px; top: 0px; }
+}
+@-o-keyframes anim {
+    0% { background-color: red; left: 0px; top: 0px;  }
+    25% { background-color: blueviolet; left: 110px; top: 0px; }
+    50% { background-color: grey; left: 110px; top: 110px; }
+    75% { background-color: yellow; left: 0px; top: 110px;  }
+    100% { background-color: red; left: 0px; top: 0px; }
+}
+
+
+#div-9 {
+    height: 500px;
+    column-count:4;/*列数*/
+    -moz-column-count:4; /* Firefox */
+    -webkit-column-count:4; /* Safari 和 Chrome */
+
+    column-gap:30px;/*列间隔*/
+    -moz-column-gap:30px; /* Firefox */
+    -webkit-column-gap:30px; /* Safari 和 Chrome */
+
+    column-rule:3px outset #ff00ff;/*规定列之间的宽度、样式和颜色规则*/
+    -moz-column-rule:3px outset #ff00ff; /* Firefox */
+    -webkit-column-rule:3px outset #ff00ff; /* Safari 和 Chrome */
+}

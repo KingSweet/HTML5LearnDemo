@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--
+
+div section article ，语义是从无到有，逐渐增强的。
+div 无任何语义，仅仅用作样式化或者脚本化的钩子(hook)，
+对于一段主题性的内容，则就适用 section，
+而假如这段内容可以脱离上下文，作为完整的独立存在的一段内容，则就适用 article。
+原则上来说，能使用 article 的时候，也是可以使用 section 的，
+但是实际上，假如使用 article 更合适，那么就不要使用 section 。
+nav 和 aside 的使用也是如此，这两个标签也是特殊的 section，
+在使用 nav 和 aside 更合适的情况下，也不要使用 section 了。
+
+-->
+
+<!--1.article元素
+    <article> 标签规定独立的自包含内容。
+    一篇文章应有其自身的意义，应该有可能独立于站点的其余部分对其进行分发。
+    <article> 元素的潜在来源：
+    论坛帖子
+    报纸文章
+    博客条目
+    用户评论
+-->
+==============================article元素======================================
+<article>
+    <header>
+        <h1>极客学院</h1>
+        <p>Hello, Welcome!</p>
+    </header>
+    <p>hello!</p>
+    <footer>
+        <p>底部</p>
+    </footer>
+</article>
+
+<article>
+    <h1>这是一个内嵌页面</h1>
+    <object>
+        <embed src="http://www.baidu.com" width="600px" height="400px"></embed>
+    </object>
+</article>
+
+<!--2.section元素
+    <section> 标签定义文档中的节（section、区段）。
+    比如章节、页眉、页脚或文档中的其他部分。
+-->
+==============================section元素======================================
+<article>
+    <h1>1111111</h1>
+    <p>11111111.......</p>
+    <section>
+        <h2>1.111111</h2>
+        <p>1.11111111.......</p>
+    </section>
+
+    <h1>222222</h1>
+    <p>222222.......</p>
+    <section>
+        <h2>2.22222</h2>
+        <p>2.22222222.......</p>
+    </section>
+</article>
+
+<!--3.nav导航栏-->
+==============================nav导航栏======================================
+<nav>
+    <ul>
+        <li><a href="#">主页</a></li>
+        <li><a href="#">开发文档</a></li>
+    </ul>
+</nav>
+
+<article>
+    <header>
+        <h1>HTML5与CSS3的历史</h1>
+        <nav>
+            <ul>
+                <li><a href="#">HTML5的历史</a></li>
+                <li><a href="#">CSS3的历史</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h1>HTML5的历史</h1>
+        <p>...</p>
+    </section>
+
+    <section>
+        <h1>CSS3的历史</h1>
+        <p>...</p>
+    </section>
+
+    <footer>
+        <a href="#">修改</a>
+        <a href="#">删除</a>
+    </footer>
+</article>
+
+<footer>
+    <p><small>版权声明:</small></p>
+</footer>
+
+
+<!--4.aside-->
+==============================aside======================================
+<header><h1>aside</h1></header>
+
+<article>
+    <h1>语法</h1>
+    <p>文章的征文...</p>
+
+    <aside>
+        <h1>名词解释</h1>
+        <p>语法: .....................</p>
+    </aside>
+</article>
+
+<aside>
+    <nav>
+        <h2>评论</h2>
+        <ul>
+            <li><a href="#">2015-8-12</a></li>
+            <li><a href="#">.........</a></li>
+        </ul>
+    </nav>
+</aside>
+
+
+<!--
+    5.time元素 pubdate
+    T--代表间隔,日期与时间的间隔
+    Z--表示使用UTC标准时间
+    +时差
+-->
+==============================time元素 pubdate======================================<br/>
+<time datetime="2015-10-10" pubdate>2015-10-10</time><br/>
+<time datetime="2015-10-10T20:00">2015-10-10</time><br/>
+<time datetime="2015-10-10T20:00Z">2015-10-10</time><br/>
+<time datetime="2015-10-10T20:00+09:00">2015-10-10</time><br/>
+
+
+
+
+
+<!--6.header - 放置整个页面的标题或者Logo-->
+==============================header======================================<br/>
+<header>
+    <h1>h1</h1>
+</header>
+
+
+
+<!--7.footer - 表示底部-->
+==============================footer======================================<br/>
+<footer>
+    底部
+</footer>
+
+
+<!--8.hgroup - 表示底部-->
+==============================footer======================================<br/>
+<article>
+    <header>
+        <hgroup>
+            <h1>这是标题</h1>
+            <h2>这是子标题</h2>
+        </hgroup>
+
+        <p><time datetime="2015-10-10">2015-10-10</time></p>
+    </header>
+
+    <div></div>
+
+    <footer></footer>
+
+</article>
+
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<form id="form-1">
+    <input type="text">
+</form>
+<textarea form="form-1"></textarea>
+<!--1.formaction-->
+<form id="form-2">
+    <input type="submit" name="s1" value="v1" formaction="http://localhost:63343/htdocs/Service.php">提交到http://localhost:63343/htdocs/Service.php
+</form>
+
+
+
+<!--2.formmethod-->
+<form id="form-3">
+    <input type="submit" name="s2" value="v2" formmethod="post" formaction="http://localhost:63343/htdocs/Service.php">post提交<br/>
+    <input type="submit" name="s3" value="v3" formmethod="get" formaction="http://localhost">get提交<br/>
+</form>
+
+
+
+<!--3.编码方式-->
+<!--
+    在Form元素的语法中，EncType表明提交数据的格式 用 Enctype 属性指定将数据回发到服务器时浏览器使用的编码类型。
+    下边是说明：
+    application/x-www-form-urlencoded： 窗体数据被编码为名称/值对。这是标准的编码格式。
+    multipart/form-data： 窗体数据被编码为一条消息，页上的每个控件对应消息中的一个部分。
+    text/plain： 窗体数据以纯文本形式进行编码，其中不含任何控件或格式字符。
+    补充
+    form的enctype属性为编码方式，常用有两种：application/x-www-form-urlencoded和multipart/form-data，
+    默认为application/x-www-form-urlencoded。
+    当action为get时候，浏览器用x-www-form-urlencoded的编码方式把form数据转换成一个字串（name1=value1&name2=value2...），
+    然后把这个字串append到url后面，用?分割，加载这个新的url。
+    当action为post时候，浏览器把form数据封装到http body中，然后发送到server。
+    如果没有type=file的控件，用默认的application/x-www-form-urlencoded就可以了。
+    但是如果有type=file的话，就要用到multipart/form-data了。浏览器会把整个表单以控件为单位分割，
+    并为每个部分加上Content-Disposition(form-data或者file),
+    Content-Type(默认为text/plain),name(控件name)等信息，并加上分割符(boundary)。
+-->
+<form id="form-4">
+    <input type="submit" name="s2" value="v2" formenctype="text/plain">表单中的空格转化成+号<br/>
+    <input type="submit" name="s2" value="v2" formenctype="multipart/form-data">文件上传<br/>
+    <input type="submit" name="s2" value="v2" formenctype="application/x-www-form-urlencoded"><br/>
+</form>
+
+
+<!--4.formtarget-->
+<form id="form-3">
+    <input type="submit" name="s2" value="_blank" formtarget="_blank" formaction="http://localhost"><br/>
+    <input type="submit" name="s3" value="_self" formtarget="_self" formaction="http://localhost"><br/>
+    <input type="submit" name="s3" value="_parent" formtarget="_parent" formaction="http://localhost"><br/>
+    <input type="submit" name="s3" value="_top" formtarget="_top" formaction="http://localhost"><br/>
+    <input type="submit" name="s3" value="framename" formtarget="framename" formaction="http://localhost"><br/>
+</form>
+
+
+
+<!--5.autofocus-->
+<form>
+    <input type="text">
+    <input type="text">
+</form>
+
+
+
+<!--6.required 非空检查-->
+<form action="http://www.baidu.com">
+    <input type="text" required="required">
+    <input type="submit" value="提交" />
+</form>
+
+<br/>
+
+
+
+<!--7.-->
+<form id="form-9">
+    <label id="label-1" for="input-9">name:</label>
+    <input id="input-9">
+    <input id="btn-1" type="button" value="提交" onclick="Validate()"/>
+</form>
+<script>
+    function Validate() {
+        var txtName = document.getElementById("input-9");
+        var button = document.getElementById("btn-1");
+        var form = document.getElementById("form-9")
+        if (txtName.value.toString() == "") {
+            var label = document.createElement("label-1");
+            label.setAttribute("for", "input-9");
+            form.insertBefore(label, button);
+            txtName.labels[1].innerHTML = "nameaaaaa:";
+            txtName.labels[1].setAttribute("style", "font-siz2:9px;color:red");
+        }
+    }
+</script>
+</body>
+</html>
