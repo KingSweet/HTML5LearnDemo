@@ -128,7 +128,7 @@
 </script>
 
 
-<!--7.-->
+<!--7.插入按钮-->
 <div onmouseup="moveBtn()" style="background-color: aqua; width: 100px; height: 100%">
     akjsdkjakjsgdkjagskdgasjdgjasg
 </div>
@@ -144,6 +144,59 @@
     }
 </script>
 
+
+<!--8.文字位置前后-->
+asjdkkalskdjklj<b id="b-1">我是</b>sajdlaslkdhlahsldhalsd<br/>
+<button onclick="comparePos()">移动按钮</button><br/>
+<script>
+    function comparePos () {
+        var boldText = document.getElementById("b-1");
+        var boldRange = document.createRange();
+        boldRange.selectNodeContents(boldText.firstChild);
+        var selection = document.getSelection();
+        if (selection.rangeCount > 0) {
+            var selectRange = selection.getRangeAt(0);
+            /*
+            * START_TO_START	用指定范围的开始点与当前范围的开始点进行比较。
+              START_TO_END	    用指定范围的开始点与当前范围的结束点进行比较。
+              END_TO_END	    用指定范围的结束点与当前范围的结束点进行比较。
+              END_TO_START	    用指定范围的结束点与当前范围的开始点进行比较。
+            * */
+            if (selectRange.compareBoundaryPoints(Range.START_TO_END, boldRange) == -1) {
+                alert("选取的文字在粗体前面");
+            }
+
+            if (selectRange.compareBoundaryPoints(Range.END_TO_START, boldRange) == 1) {
+                alert("选取的文字在粗体后面");
+            }
+        }
+    }
+</script>
+
+
+<!--9.-->
+<div id="div-7" style="background-color: aqua; width: 300px; height: 50px">ssssssss</div>
+<button onclick="selectRangeContents()">选择元素</button><br/>
+<button onclick="unSelect()">取消元素</button><br/>
+<button onclick="showRange()">显示Range内容</button><br/>
+<script>
+    var r = document.createRange();
+
+    function selectRangeContents () {
+        var div = document.getElementById("div-7");
+        r.selectNode(div);
+    }
+
+    function unSelect () {
+        r.collapse(false);//取消选择
+        //r.detach();//释放r
+    }
+
+    function showRange () {
+        alert(r.toString());
+    }
+
+</script>
 
 
 </body>
