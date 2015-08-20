@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--1.音频播放-->
+<audio id="audio-1" src="../Res/Les%20Voisines.mp3" controls="controls">您的浏览器不支持!</audio>
+<button onclick="playMusic()">播放/暂停</button>
+<script>
+    var audio1 = document.getElementById("audio-1");
+    function playMusic () {
+        if (audio1.paused) {
+            audio1.play();
+        } else {
+            audio1.pause();
+        }
+    }
+</script>
+
+<!--2.视频播放-->
+<video src="" controls="controls">
+    <source src="http://tv.sohu.com/20150815/n418908465.shtml#0">
+</video>
+
+</body>
+</html>
