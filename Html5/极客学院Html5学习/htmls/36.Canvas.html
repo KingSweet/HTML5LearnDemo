@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .canvas {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+
+<!--1.创建canvas标签
+    <canvas> 标签定义图形，比如图表和其他图像。
+    <canvas> 标签只是图形容器，您必须使用脚本来绘制图形
+    两种创建方法
+-->
+<!--<canvas id="canvas-1" class="canvas" width="200px" height="200px"></canvas>-->
+<!--<button onclick="createCanvas()">创建canvas</button>-->
+<script>
+    //创建 canvas
+    function createCanvas () {
+        document.body.innerHTML = "<canvas id=\"canvas-1\" class=\"canvas\" width=\"200px\" height=\"200px\"></canvas>";
+    }
+</script>
+
+
+<!--2.绘制图形
+    https://developer.mozilla.org/zh-CN/
+-->
+<button onclick="drawRect()">绘制图形</button>
+<button onclick="drawImage()">绘制图片</button>
+<script>
+
+    //获得canvas
+    function getCanvas () {
+        return document.getElementById("canvas-1");
+    }
+
+    //绘制图形
+    function drawRect () {
+        createCanvas();
+        var canvas = getCanvas();
+        var context = canvas.getContext("2d");
+        context.fillStyle = "yellow";//填充颜色
+        context.scale(1.1, 0.5);//缩放
+        context.fillRect(0, 0 , 50, 50);//绘图
+
+    }
+
+    //绘制图片
+    function drawImage () {
+        createCanvas();
+        var canvas = getCanvas();
+        var context = canvas.getContext("2d");
+        var img = new Image();
+        img.src = "../Res/1.jpg";
+        img.onload = function () {
+            context.drawImage(img, 50, 0);
+        }
+    }
+
+    //绘制圆形
+    function draw (id) {
+        var canvas = document.getElementById(id);
+        if (canvas == null) {
+            return;
+        }
+
+        var context = canvas.getContext("2d");
+        for (var i = 0; i < 10; ++i) {
+            context.beginPath();
+            /*Parameters
+            x 圆弧中心（圆心）的 x 轴坐标。
+            y 圆弧中心（圆心）的 y 轴坐标。
+            radius 圆弧的半径。
+            startAngle 圆弧的起始点， x轴方向开始计算，单位以弧度表示。
+            endAngle 圆弧的重点， 单位以弧度表示。
+            anticlockwise  可选的Boolean值 ，如果为 true，逆时针绘制圆弧，反之，顺时针绘制。*/
+            context.arc(i * 25, i * 25, i * 10, 0, Math.PI * 2, true);
+            context.closePath();
+            context.fillStyle = "rgba(133, 23, 44, 0.6)";
+            context.fill();
+        }
+    }
+
+</script>
+
+
+<!--4.绘制圆形-->
+<br><canvas id="canvas-2" width="600px" height="700px" class="canvas"></canvas><br>
+<button onclick="draw('canvas-2')">绘制圆形</button><br/>
+
+
+<!--5.moveto lineto-->
+<canvas id="canvas-3" width="300px" height="400px" class="canvas"></canvas><br>
+<button onclick="drawMoveTo('canvas-3')">绘制圆形</button><br/>
+<script>
+    function drawMoveTo (id) {
+        var canvas = document.getElementById(id);
+        var context = canvas.getContext("2d");
+        context.fillStyle = "rgba(133, 23, 44, 0.6)";
+        context.strokeStyle = "rbg(0, 0, 100)";
+        var dx = 150, dy = 150, s = 100;
+        var dig = Math.PI / 15 * 11;
+        context.beginPath();
+        for (var i = 0; i < 30; ++i) {
+            var x = Math.sin(i * dig);
+            var y = Math.cos(i * dig);
+            context.lineTo(dx + x * s, dy + y * s);
+        }
+        context.closePath();
+        context.fill();
+        context.stroke();
+    }
+</script>
+
+</body>
+</html>
