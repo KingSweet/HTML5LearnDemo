@@ -116,5 +116,235 @@
     }
 </script>
 
+<!--6.贝赛尔曲线-->
+<!--
+    bezierCurveTo() 方法在一个画布中开始子路径的一个新的集合。
+    bezierCurveTo(cpX1, cpY1, cpX2, cpY2, x, y)
+    cpX1, cpY1	和曲线的开始点（当前位置）相关联的控制点的坐标。
+    cpX2, cpY2	和曲线的结束点相关联的控制点的坐标。
+    x,    y	    曲线的结束点的坐标。
+-->
+<canvas id="canvas-4" width="300px" height="400px" class="canvas"></canvas><br>
+<button onclick="drawBezierCurve('canvas-4')">绘制贝塞尔</button><br/>
+<script>
+    function drawBezierCurve (id) {
+        var canvas = document.getElementById(id);
+        var context = canvas.getContext("2d");
+        context.fillStyle = "rgba(133, 23, 44, 0.6)";
+        context.strokeStyle = "rbg(0, 0, 100)";
+        var dx = 150, dy = 150, s = 100;
+        var dig = Math.PI / 15 * 11;
+        context.beginPath();
+        context.moveTo(dx, dy);
+        for (var i = 0; i < 30; ++i) {
+            var x = Math.sin(i * dig);
+            var y = Math.cos(i * dig);
+            context.bezierCurveTo(dx+x*s, dy+y*s-100, dx+x*s+100, dy+y*s, dy+x*s, dy+y*s);
+        }
+        context.closePath();
+        context.fill();
+        context.stroke();
+    }
+</script>
+
+
+<!--7.canvas渐变-->
+<canvas id="canvas-5" width="500px" height="500px" class="canvas"></canvas><br>
+<button onclick="drawLinearGradient('canvas-5')">绘制图形渐变</button><br/>
+<script>
+    function drawLinearGradient (id) {
+        var canvas = document.getElementById(id);
+        var context = canvas.getContext("2d");
+        //设置背景渐变颜色
+        /*
+        * x0
+         起点的 x 轴坐标。
+         y0
+         起点的 y 轴坐标。
+         x1
+         终点的 x 轴坐标。
+         y1
+         终点的 y 轴坐标。
+        * */
+        var g1 = context.createLinearGradient(0, 0, 0, 300);
+        /*
+        * stop	介于 0.0 与 1.0 之间的值，表示渐变中开始与结束之间的位置。
+         color	在结束位置显示的 CSS 颜色值
+        * */
+        g1.addColorStop(0, "rgb(255,255,0)");
+        g1.addColorStop(1, "rgb(0,255,1)");
+        context.fillStyle = g1;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        //图形渐变
+        var g2 = context.createLinearGradient(0, 0, 300, 0);
+        g2.addColorStop(0, "rgba(123,34,2,0.5)");
+        g2.addColorStop(1, "rgba(255,234,99,0.5)");
+        for (var i = 0; i < 10; ++i) {
+            context.beginPath();
+            context.fillStyle = g2;
+            context.arc(i*25, i*25, i*10, 0, Math.PI*2, true);
+            context.closePath();
+            context.fill();
+            context.stroke();
+        }
+
+
+    }
+</script>
+
+
+
+<!--8.绘制径向渐变-->
+<canvas id="canvas-6" width="500px" height="500px" class="canvas"></canvas><br>
+<button onclick="drawRadialGradient('canvas-6')">绘制径向渐变</button><br/>
+<script>
+    function drawRadialGradient (id) {
+        var canvas = document.getElementById(id);
+        var context = canvas.getContext("2d");
+        //CanvasGradient ctx.createRadialGradient(x0, y0, r0, x1, y1, r1);
+        /*
+        * x0
+         开始圆形的 x 轴坐标。
+         y0
+         开始圆形的 y 轴坐标。
+         r0
+         开始圆形的半径。
+         x1
+         结束圆形的 x 轴坐标。
+         y1
+         结束圆形的 y 轴坐标。
+         r1
+         结束圆形的半径
+        * */
+        var g1 = context.createRadialGradient(400, 50, 0, 400, 0, 400);
+        g1.addColorStop(0.1, "red");
+        g1.addColorStop(0.3, "blue");
+        g1.addColorStop(1,   "orange");
+        context.fillStyle = g1;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+    }
+</script>
+
+
+
+<!--9.平移缩放旋转-->
+<canvas id="canvas-7" width="500px" height="500px" class="canvas"></canvas><br>
+<button onclick="draw9('canvas-7')">平移缩放旋转</button><br/>
+<script>
+    function draw9 (id) {
+        var canvas = document.getElementById(id);
+        var context = canvas.getContext("2d");
+        context.translate(200, 50);
+        context.fillStyle = "rgba(255,0,255,0.3)";
+        for (var i = 0; i < 100; i++) {
+            context.translate(25, 25);
+            context.scale(0.95, 0.95);
+            context.rotate(Math.PI/10);
+            context.fillRect(0,0,100,50);
+        }
+    }
+</script>
+
+
+
+<!--10.图形组合-->
+
+<canvas id="canvas-8" width="500px" height="1500px" class="canvas"></canvas><br>
+<button onclick="draw10('canvas-8')">图形组合</button><br/>
+<script>
+
+    /*
+    * ctx.globalCompositeOperation = type;
+    * "copy"	只绘制新图形，删除其他所有内容。
+     "darker"	在图形重叠的地方，颜色由两个颜色值相减后决定。
+     "destination-atop"	已有的内容只有在它和新的图形重叠的地方保留。新图形绘制于内容之后。
+     "destination-in"	在新图形以及已有画布重叠的地方，已有内容都保留。所有其他内容成为透明的。
+     "destination-out"	在已有内容和新图形不重叠的地方，已有内容保留。所有其他内容成为透明。
+     "destination-over"	新图形绘制于已有内容的后面。
+     "lighter"	在图形重叠的地方，颜色由两种颜色值的加值来决定。
+     "source-atop"	只有在新图形和已有内容重叠的地方，才绘制新图形。
+     "source-in"	在新图形以及已有内容重叠的地方，新图形才绘制。所有其他内容成为透明。
+     "source-out"	只有在和已有图形不重叠的地方，才绘制新图形。
+     "source-over"	新图形绘制于已有图形的顶部。这是默认的行为。
+     "xor"	在重叠和正常绘制的其他地方，图形都成为透明的。
+    * */
+
+    function draw10 (id) {
+        var canvas = document.getElementById(id);
+        var context = canvas.getContext("2d");
+        var arr = new Array ("copy",
+                             "darker",
+                             "destination-atop",
+                             "destination-in",
+                             "destination-out",
+                             "destination-over",
+                             "lighter",
+                             "source-atop",
+                             "source-in",
+                             "source-out",
+                             "source-over",
+                             "xor");
+        context.fillStyle = "blue";
+
+        for (var i = 0; i < arr.length; ++i) {
+            var w = 60, h = 60;
+            var x = 50, y = 60 + (h + 50) * i;
+
+            context.fillStyle = "blue";
+            context.fillRect(x, y, w, h);
+
+
+            context.beginPath();
+            /*Parameters
+             x 圆弧中心（圆心）的 x 轴坐标。
+             y 圆弧中心（圆心）的 y 轴坐标。
+             radius 圆弧的半径。
+             startAngle 圆弧的起始点， x轴方向开始计算，单位以弧度表示。
+             endAngle 圆弧的重点， 单位以弧度表示。
+             anticlockwise  可选的Boolean值 ，如果为 true，逆时针绘制圆弧，反之，顺时针绘制。*/
+            context.arc(x+50, y+50, 30, 0, Math.PI*2, false);
+            context.closePath();
+            context.fillStyle = "rgba(133, 23, 44, 0.6)";
+            context.globalCompositeOperation = arr[2];
+            context.fill();
+        }
+
+    }
+</script>
+
+
+<!--11.绘制阴影-->
+<canvas id="canvas-11" width="500px" height="500px" class="canvas"></canvas><br>
+<button onclick="draw11('canvas-11')">绘制阴影</button><br/>
+<script>
+    function draw11 (id) {
+        var canvas = document.getElementById(id);
+        var context = canvas.getContext("2d");
+        var dx = 100, dy = 100, s = 50;
+        context.beginPath();
+        context.fillStyle = "red";
+        var x = Math.sin(50);
+        var y = Math.cos(50);
+        var dig = Math.PI/5*4;
+        for (var i = 0; i < 5; i++) {
+            x = Math.sin(i*dig);
+            y = Math.cos(i*dig);
+            context.lineTo(dx+x*s, dy+y*s);
+        }
+        context.closePath();
+        context.fill();
+
+        drawShadow(context);
+    }
+    function drawShadow (context) {
+        context.shadowOffsetX = 10;
+        context.shadowOffsetY = 10;
+        context.shadowColor = "rgba(100,100,100,0.5)";
+        context.shadowBlur = 7.5;//阴影的模糊级数
+        context.fill();
+    }
+</script>
+
 </body>
 </html>

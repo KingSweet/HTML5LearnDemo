@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../createjs-2015.05.21.min.js"></script>
+</head>
+<body>
+
+<canvas id="canvas-1" width="500px" height="500px"></canvas>
+<button></button>
+<script>
+    var canvas, stage, txt, count = 0;
+
+    window.onload = function () {
+        canvas = document.getElementById("canvas-1");
+        stage = new createjs.Stage(canvas);
+
+        txt = new createjs.Text("number->0", "20px Arial", "green");
+        stage.addChild(txt);
+
+        createjs.Ticker.setFPS(30);
+        createjs.Ticker.addEventListener ("tick", tick);
+    }
+
+    function tick (e) {
+        txt.text = "number->" + count++ + "!";
+        stage.update();
+    }
+</script>
+
+</body>
+</html>
