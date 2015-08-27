@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html manifest="38.appcache">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<h1 class="h1">Hello HTML5!</h1>
+
+
+
+
+<!--2.workers-->
+
+<div id="div-1">0</div>
+<script>
+    var numDiv;
+
+    window.onload = function () {
+        numDiv = document.getElementById("div-1");
+        var work = new Worker("../JS/38Worker.js");
+        work.onmessage = function (e) {
+            numDiv.innerHTML = e.data;
+        }
+    }
+</script>
+
+</body>
+</html>
